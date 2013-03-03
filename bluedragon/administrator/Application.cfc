@@ -51,7 +51,7 @@
 
 			// Need to make sure the basic security nodes exist in bluedragon.xml. Other potential missing nodes
 			// are handled as the related pages within the administrator are hit.
-			Application.administrator.setInitialSecurity();
+			
 
 			Application.inited = true;
 
@@ -62,6 +62,8 @@
 	<cffunction name="onRequestStart" access="public" output="false" returntype="boolean">
 		<cfargument name="thePage" type="string" required="true" />
 
+		<cfset Application.administrator.setInitialSecurity()>
+		
 		<!--- handle the allow/deny IP addresses --->
 		<cfset var allowedIPs = Application.administrator.getAllowedIPs() />
 		<cfset var allowedIP = "" />
